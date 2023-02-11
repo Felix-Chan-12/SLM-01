@@ -9,19 +9,19 @@ sys.path.append(str(Path(os.path.abspath(__file__)).parent.parent))
 from utils import *
 
 class Perceptron:
-    def __init__(self, lr=1e-1, max_iteration=2000, verbose=False):
+    def __init__(self, lr=1, max_iteration=2000, verbose=False):
         self.lr = lr
         self.verbose = verbose
         self.max_iteration = max_iteration
 
     def _trans(self, x):
-        return self.w @ x + self.b
+        return self.w @ x + self.b # @为向量内积运算，也是矩阵乘法
 
     def _predict(self, x):
         return 1 if self._trans(x) >= 0. else -1
 
     def fit(self, X, Y):
-        self.feature_size = X.shape[-1]
+        self.feature_size = X.shape[-1] #确定输入的特征维度,x={x^(1),x^(2)},即维度=2
         # define parameteres
         self.w = np.random.rand(self.feature_size)
         self.b = np.random.rand(1)
@@ -35,7 +35,8 @@ class Perceptron:
 
             updated = 0
             # shuffle data
-            perm = np.random.permutation(len(X))
+            # perm = np.random.permutation(len(X)) #随机确定训练集中数据顺序,e.g. 4个数据,则perm可能为[3,0,1,2]
+            perm = np.arange(len(X))
             for i in perm:
                 x, y = X[i], Y[i]
                 # if there is a mis-classified sample
@@ -55,7 +56,7 @@ class Perceptron:
 
 if __name__ == "__main__":
     def demonstrate(X, Y, desc):
-        console = Console(markup=False)
+        console = Console(markup=True)
         perceptron = Perceptron(verbose=True)
         perceptron.fit(X, Y)
 
@@ -83,3 +84,10 @@ if __name__ == "__main__":
     X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
     Y = np.array([1, -1, -1, 1])
     demonstrate(X, Y, "Example 2: Perceptron cannot solve a simple XOR problem")
+    
+    # -------------------------- LH 2.1 ----------------------------------------
+    print("Lihang 2.1:")
+    X = np.array([[3, 3], [4, 3], [1, 1]])
+    Y = np.array([1, 1, -1])
+    demonstrate(X, Y, "Lihang 2.1")
+    
