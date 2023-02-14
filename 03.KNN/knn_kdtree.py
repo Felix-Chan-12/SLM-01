@@ -22,6 +22,11 @@ class KDTree:
     def build(self, X, Y, split_axis=0):
         if not len(X):
             return None
+        '''
+        argpartition的功能
+        给定一个arr，我要求这个array第3小(index=2)的值，就用arr[np.argpartition(arr,2)[2]]
+        要求第i小的值，就用arr[np.argpartition(arr,i-1)[i-1]]
+        '''
         median_ind = np.argpartition(X[:, split_axis], len(X) // 2, axis=0)[len(X) // 2]
         split_point = float(X[median_ind, split_axis])
         equal_x = X[X[:, split_axis] == split_point]
