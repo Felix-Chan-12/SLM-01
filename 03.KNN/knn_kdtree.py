@@ -106,17 +106,18 @@ if __name__ == "__main__":
     # generate grid-shaped test data
     X_test = np.concatenate(np.stack(np.meshgrid(np.linspace(-1, 2, 100), np.linspace(-1, 2, 100)), axis=-1))
     demonstrate(X_train, Y_train, X_test, 1, "Example 1")
+    demonstrate(X_train, Y_train, X_test, 2, "Example 1")
 
-    # -------------------------- Example 2 (Imbalanced Data) ------------------------
-    X_train = np.array([[0, 0], [0, 1], [1, 0], [1, 1], [.5, .5]])
-    Y_train = np.array([1, 1, 2, 3, 4])
-    # generate grid-shaped test data
-    X_test = np.concatenate(np.stack(np.meshgrid(np.linspace(-1, 2, 100), np.linspace(-1, 2, 100)), axis=-1))
-    demonstrate(X_train, Y_train, X_test, 1, "Example 2")
+    # # -------------------------- Example 2 (Imbalanced Data) ------------------------
+    # X_train = np.array([[0, 0], [0, 1], [1, 0], [1, 1], [.5, .5]])
+    # Y_train = np.array([1, 1, 2, 3, 4])
+    # # generate grid-shaped test data
+    # X_test = np.concatenate(np.stack(np.meshgrid(np.linspace(-1, 2, 100), np.linspace(-1, 2, 100)), axis=-1))
+    # demonstrate(X_train, Y_train, X_test, 1, "Example 2")
 
-    # -------------------------- Example 3 (Imbalanced Data) ------------------------
-    X_train = np.array([[0, 0], [0, 1], [1, 0], [1, 1], [.5, .5]])
-    Y_train = np.array([1, 1, 2, 2, 2])
-    # generate grid-shaped test data
-    X_test = np.concatenate(np.stack(np.meshgrid(np.linspace(-1, 2, 100), np.linspace(-1, 2, 100)), axis=-1))
-    demonstrate(X_train, Y_train, X_test, 1, "Example 3")
+    # # -------------------------- Example 3 (Imbalanced Data) ------------------------
+    # X_train = np.array([[0, 0], [0, 1], [1, 0], [1, 1], [.5, .5]])
+    # Y_train = np.array([1, 1, 2, 2, 2])
+    # # generate grid-shaped test data
+    # X_test = np.concatenate(np.stack(np.meshgrid(np.linspace(-1, 2, 100), np.linspace(-1, 2, 100)), axis=-1))
+    # demonstrate(X_train, Y_train, X_test, 1, "Example 3")
